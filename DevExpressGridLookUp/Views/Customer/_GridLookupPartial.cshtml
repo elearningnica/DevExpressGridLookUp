@@ -1,0 +1,39 @@
+@{
+    var gridLookup = Html.DevExpress().GridLookup(settings =>
+    {
+        settings.Name = "GridLookup";
+        settings.KeyFieldName = "CustomerKey";
+        settings.Theme = "Material"; //theme name
+
+        settings.GridViewProperties.CallbackRouteValues = new { Controller = "Customer", Action = "GridLookupPartial" };
+        settings.Properties.SelectionMode = GridLookupSelectionMode.Single;
+        settings.Properties.TextFormatString = "{0}";
+
+        settings.GridViewProperties.SettingsEditing.AddNewRowRouteValues = new { Controller = "Customer", Action = "GridLookupPartialAddNew" };
+        settings.GridViewProperties.SettingsEditing.UpdateRowRouteValues = new { Controller = "Customer", Action = "GridLookupPartialUpdate" };
+        settings.GridViewProperties.SettingsEditing.DeleteRowRouteValues = new { Controller = "Customer", Action = "GridLookupPartialDelete" };
+        settings.GridViewProperties.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.GridViewProperties.SettingsBehavior.ConfirmDelete = true;
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.GridViewProperties.SettingsPager.Visible = true;
+        settings.GridViewProperties.Settings.ShowGroupPanel = true;
+        settings.GridViewProperties.Settings.ShowFilterRow = true;
+
+        settings.Columns.Add("FirstName");
+        settings.Columns.Add("LastName");
+        settings.Columns.Add("MaritalStatus");
+        settings.Columns.Add("Gender");
+        settings.Columns.Add("EmailAddress");
+        settings.Columns.Add("TotalChildren");
+    });
+    if (ViewData["EditError"] != null)
+    {
+        gridLookup.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@gridLookup.BindList(Model).GetHtml()

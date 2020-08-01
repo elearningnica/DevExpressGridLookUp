@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdventureWorksDW2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DimCurrency">
+          <Key>
+            <PropertyRef Name="CurrencyKey" />
+          </Key>
+          <Property Name="CurrencyKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyAlternateKey" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DimCustomer">
+          <Key>
+            <PropertyRef Name="CustomerKey" />
+          </Key>
+          <Property Name="CustomerKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeographyKey" Type="int" />
+          <Property Name="CustomerAlternateKey" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="8" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameStyle" Type="bit" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="MaritalStatus" Type="nchar" MaxLength="1" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="10" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="YearlyIncome" Type="money" />
+          <Property Name="TotalChildren" Type="tinyint" />
+          <Property Name="NumberChildrenAtHome" Type="tinyint" />
+          <Property Name="EnglishEducation" Type="nvarchar" MaxLength="40" />
+          <Property Name="SpanishEducation" Type="nvarchar" MaxLength="40" />
+          <Property Name="FrenchEducation" Type="nvarchar" MaxLength="40" />
+          <Property Name="EnglishOccupation" Type="nvarchar" MaxLength="100" />
+          <Property Name="SpanishOccupation" Type="nvarchar" MaxLength="100" />
+          <Property Name="FrenchOccupation" Type="nvarchar" MaxLength="100" />
+          <Property Name="HouseOwnerFlag" Type="nchar" MaxLength="1" />
+          <Property Name="NumberCarsOwned" Type="tinyint" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="120" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="120" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="DateFirstPurchase" Type="date" />
+          <Property Name="CommuteDistance" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityContainer Name="AdventureWorksDW2017ModelStoreContainer">
+          <EntitySet Name="DimCurrency" EntityType="Self.DimCurrency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimCustomer" EntityType="Self.DimCustomer" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdventureWorksDW2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DimCurrency">
+          <Key>
+            <PropertyRef Name="CurrencyKey" />
+          </Key>
+          <Property Name="CurrencyKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyAlternateKey" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AdventureWorksDW2017Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DimCurrency" EntityType="Self.DimCurrency" />
+          <EntitySet Name="DimCustomer" EntityType="AdventureWorksDW2017Model.DimCustomer" />
+        </EntityContainer>
+        <EntityType Name="DimCustomer">
+          <Key>
+            <PropertyRef Name="CustomerKey" />
+          </Key>
+          <Property Name="CustomerKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeographyKey" Type="Int32" />
+          <Property Name="CustomerAlternateKey" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameStyle" Type="Boolean" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearlyIncome" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalChildren" Type="Byte" />
+          <Property Name="NumberChildrenAtHome" Type="Byte" />
+          <Property Name="EnglishEducation" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="SpanishEducation" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="FrenchEducation" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishOccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SpanishOccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FrenchOccupation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HouseOwnerFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="NumberCarsOwned" Type="Byte" />
+          <Property Name="AddressLine1" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DateFirstPurchase" Type="DateTime" Precision="0" />
+          <Property Name="CommuteDistance" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdventureWorksDW2017ModelStoreContainer" CdmEntityContainer="AdventureWorksDW2017Entities">
+          <EntitySetMapping Name="DimCurrency">
+            <EntityTypeMapping TypeName="AdventureWorksDW2017Model.DimCurrency">
+              <MappingFragment StoreEntitySet="DimCurrency">
+                <ScalarProperty Name="CurrencyKey" ColumnName="CurrencyKey" />
+                <ScalarProperty Name="CurrencyAlternateKey" ColumnName="CurrencyAlternateKey" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimCustomer">
+            <EntityTypeMapping TypeName="AdventureWorksDW2017Model.DimCustomer">
+              <MappingFragment StoreEntitySet="DimCustomer">
+                <ScalarProperty Name="CommuteDistance" ColumnName="CommuteDistance" />
+                <ScalarProperty Name="DateFirstPurchase" ColumnName="DateFirstPurchase" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="NumberCarsOwned" ColumnName="NumberCarsOwned" />
+                <ScalarProperty Name="HouseOwnerFlag" ColumnName="HouseOwnerFlag" />
+                <ScalarProperty Name="FrenchOccupation" ColumnName="FrenchOccupation" />
+                <ScalarProperty Name="SpanishOccupation" ColumnName="SpanishOccupation" />
+                <ScalarProperty Name="EnglishOccupation" ColumnName="EnglishOccupation" />
+                <ScalarProperty Name="FrenchEducation" ColumnName="FrenchEducation" />
+                <ScalarProperty Name="SpanishEducation" ColumnName="SpanishEducation" />
+                <ScalarProperty Name="EnglishEducation" ColumnName="EnglishEducation" />
+                <ScalarProperty Name="NumberChildrenAtHome" ColumnName="NumberChildrenAtHome" />
+                <ScalarProperty Name="TotalChildren" ColumnName="TotalChildren" />
+                <ScalarProperty Name="YearlyIncome" ColumnName="YearlyIncome" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CustomerAlternateKey" ColumnName="CustomerAlternateKey" />
+                <ScalarProperty Name="GeographyKey" ColumnName="GeographyKey" />
+                <ScalarProperty Name="CustomerKey" ColumnName="CustomerKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
